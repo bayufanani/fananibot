@@ -20,7 +20,7 @@ server.listen(port, (err) => {
       // Self-signed certificate:
       // key: './key.pem',
       // cert: './cert.pem',
-      url: 'https://fananibot.herokuapp.com/',
+      url: 'https://fananibot.herokuapp.com',
       host: '0.0.0.0',
       port: 443
     }
