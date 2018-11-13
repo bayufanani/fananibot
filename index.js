@@ -1,5 +1,6 @@
+require('dotenv').config();
 const TeleBot = require('telebot');
-const bot = new TeleBot('767888639:AAGOMOzFv3QJ8wxsjRgIbuMg7DCD1flsBjA');
+const bot = new TeleBot(process.env.API_TOKEN);
 const http = require('http');
 const port=process.env.PORT || 3000
 
