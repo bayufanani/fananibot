@@ -1,37 +1,9 @@
-// content of index.js
-const http = require('http')
-const port = process.env.PORT||80
+const Telegraf = require('telegraf');
 
-const requestHandler = (request, response) => {
-  console.log(request.url)
-  response.end('Hello Node.js Server!')
+const API_TOKEN = process.env.API_TOKEN || '';
+const PORT = process.env.PORT || 3000;
+const URL = process.env.URL || 'https://fananibot.herokuapp.com';
 
-}
-
-const server = http.createServer(requestHandler)
-
-server.listen(port, (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  }
-
-  const TeleBot = require('telebot');
-
-  const bot = new TeleBot({
-    token: process.env.API_TOKEN,
-    webhook: {
-      // Self-signed certificate:
-      // key: './key.pem',
-      // cert: './cert.pem',
-      url: 'https://fananibot.herokuapp.com',
-      host: '0.0.0.0',
-      port: process.env.PORT
-    }
-  });
-  
-    bot.on('text', msg => bot.sendMessage(msg.from.id, msg.text));
-  
-    bot.start();
-
-  console.log(`server is listening on ${port}`)
-})
+const bot = new Telegraf(API_TOKEN);
+bot.telegram.setWebhook(`${URL}/bot${API_TOKEN}`);
+bot.startWebhook(`/bot${API_TOKEN}`, null, PORT)
