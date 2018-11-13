@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "heroku": "^7.18.5"
+    "telebot": "^1.2.6"
   }
 }
