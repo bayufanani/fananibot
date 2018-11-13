@@ -25,7 +25,7 @@ server.listen(port, (err) => {
       // cert: './cert.pem',
       url: 'https://fananibot.herokuapp.com',
       host: '0.0.0.0',
-      port: 443
+      port: process.env.PORT
     }
   });
   
