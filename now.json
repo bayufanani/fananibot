@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "index.js", "use": "@now/node" }
+  ],
+  "build": {
+    "env": {
+      "API_TOKEN": "767888639:AAGOMOzFv3QJ8wxsjRgIbuMg7DCD1flsBjA"
+    }
+  }
+}
