@@ -2,7 +2,7 @@ const TeleBot = require('telebot');
 const bot = new TeleBot('767888639:AAGOMOzFv3QJ8wxsjRgIbuMg7DCD1flsBjA');
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 80
 
 bot.on('text', (msg) => {
   switch(msg.text.toLowerCase()) {
