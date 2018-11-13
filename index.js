@@ -1,7 +1,7 @@
 const TeleBot = require('telebot');
 const bot = new TeleBot('767888639:AAGOMOzFv3QJ8wxsjRgIbuMg7DCD1flsBjA');
 var express = require('express');
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 80;
 var app = express();
 app.get('/', function (req, res) {
   res.send(JSON.stringify({ Hello: 'World'}));
