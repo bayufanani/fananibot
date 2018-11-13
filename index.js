@@ -1,5 +1,4 @@
 const TeleBot = require('telebot');
-const bot = new TeleBot('767888639:AAGOMOzFv3QJ8wxsjRgIbuMg7DCD1flsBjA');
 const http = require('http');
 const port=process.env.PORT || 3000
 
@@ -13,39 +12,22 @@ res.end('<h1>Hello World</h1>');
 
 });
 
+var bot = new TeleBot({
+  token: '767888639:AAGOMOzFv3QJ8wxsjRgIbuMg7DCD1flsBjA', // Required. Telegram Bot API token.
+  webhook: { // Optional. Use webhook instead of polling.
+      url: 'https://fananibot.herokuapp.com', // HTTPS url to send updates to.
+      host: '0.0.0.0', // Webhook server host.
+      port: 443, // Server port.
+      maxConnections: 40 // Optional. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
+  },
+  allowedUpdates: [], // Optional. List the types of updates you want your bot to receive. Specify an empty list to receive all updates.
+});
+bot.on('text', msg => bot.sendMessage(msg.from.id, msg.text));
+bot.start();
+
 server.listen(port,() => {
 
-  bot.on('text', (msg) => {
-    switch(msg.text.toLowerCase()) {
-      case 'kucing' : 
-        let promise;
-        let id = msg.chat.id;
-  
-        // Photo or gif?
-        promise = bot.sendPhoto(id, 'https://cataas.com/cat', {
-            fileName: 'kitty.jpg',
-            serverDownload: true
-        });
-        // Send "uploading photo" action
-        bot.sendAction(id, 'upload_photo');
-  
-        return promise.catch(error => {
-          console.log('[error]', error);
-          // Send an error
-          bot.sendMessage(id, `😿 An error ${ error } occurred, try again.`);
-        });
-        break;
-      default : 
-        return msg.reply.text("gak paham! 😆 "+msg.text.toLowerCase());
-        break;
-    }
-  });
-  
-  bot.on(['/hello', '/start'], (msg) => {
-    msg.reply.text('hello');
-  });
-  
-  bot.start();
+console.log(`Server running at port `+port);
 
 });
 /* // in sublime
