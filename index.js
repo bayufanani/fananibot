@@ -1,7 +1,7 @@
 const TeleBot = require('telebot');
 require('dotenv').config()
 const http = require('http')
-const port = 443
+const port = 80
 
 const requestHandler = (request, response) => {
   console.log(request.url)
