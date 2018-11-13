@@ -1,7 +1,6 @@
-const TeleBot = require('telebot');
-require('dotenv').config()
+// content of index.js
 const http = require('http')
-const port = 80
+const port = 3000
 
 const requestHandler = (request, response) => {
   console.log(request.url)
@@ -14,7 +13,6 @@ server.listen(port, (err) => {
   if (err) {
     return console.log('something bad happened', err)
   }
-  
 
   console.log(`server is listening on ${port}`)
 })
